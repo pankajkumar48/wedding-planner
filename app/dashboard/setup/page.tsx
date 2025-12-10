@@ -123,7 +123,7 @@ export default function SetupPage() {
       <div className="w-full max-w-2xl">
         <div className="text-center mb-8">
           <Heart className="h-16 w-16 text-primary fill-primary mx-auto mb-4" />
-          <h1 className="text-3xl font-bold mb-2">Let's Set Up Your Wedding</h1>
+          <h1 className="text-3xl font-bold mb-2">Let&apos;s Set Up Your Wedding</h1>
           <p className="text-muted-foreground">
             Tell us about your special day
           </p>
@@ -140,10 +140,10 @@ export default function SetupPage() {
             <form onSubmit={handleCreateWedding} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="brideName">Bride's Name *</Label>
+                  <Label htmlFor="brideName">Bride&apos;s Name *</Label>
                   <Input
                     id="brideName"
-                    placeholder="Bride's name"
+                    placeholder="Bride&apos;s name"
                     value={formData.brideName}
                     onChange={(e) => setFormData({ ...formData, brideName: e.target.value })}
                     required
@@ -151,10 +151,10 @@ export default function SetupPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="groomName">Groom's Name *</Label>
+                  <Label htmlFor="groomName">Groom&apos;s Name *</Label>
                   <Input
                     id="groomName"
-                    placeholder="Groom's name"
+                    placeholder="Groom&apos;s name"
                     value={formData.groomName}
                     onChange={(e) => setFormData({ ...formData, groomName: e.target.value })}
                     required

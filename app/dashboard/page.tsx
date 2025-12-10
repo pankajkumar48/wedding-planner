@@ -66,7 +66,7 @@ export default async function DashboardPage() {
             Welcome back!
           </h1>
           <p className="text-muted-foreground">
-            {wedding.bride_name} & {wedding.groom_name}'s Wedding
+            {wedding.bride_name} & {wedding.groom_name}&apos;s Wedding
           </p>
         </div>
         {wedding.plan_type === "free" && (
