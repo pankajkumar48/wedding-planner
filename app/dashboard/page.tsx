@@ -32,6 +32,11 @@ export default async function DashboardPage() {
 
   const wedding = weddings[0];
 
+  // Type guard to ensure wedding is defined
+  if (!wedding) {
+    redirect("/dashboard/setup");
+  }
+
   // Fetch dashboard stats
   const { data: stats } = await supabase
     .from("wedding_dashboard_stats")
