@@ -22,8 +22,8 @@ max_client_conn = 100
 
 [realtime]
 enabled = true
-port = 54323
-ip_version = "ipv4"
+#port = 54323
+#ip_version = "ipv4"
 
 [studio]
 enabled = true

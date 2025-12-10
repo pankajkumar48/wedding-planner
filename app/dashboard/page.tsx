@@ -6,6 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Users, CheckCircle2, XCircle, Clock, Heart, Calendar, IndianRupee } from "lucide-react";
 import { formatDate, formatCurrency, getDaysUntil } from "@/lib/utils";
+import type { Database } from "@/lib/types/database.types";
+
+type Wedding = Database["public"]["Tables"]["weddings"]["Row"];
+type DashboardStats = Database["public"]["Views"]["wedding_dashboard_stats"]["Row"];
+type Guest = Database["public"]["Tables"]["guests"]["Row"];
+type Payment = Database["public"]["Tables"]["payments"]["Row"];
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -30,7 +36,7 @@ export default async function DashboardPage() {
     redirect("/dashboard/setup");
   }
 
-  const wedding = weddings[0];
+  const wedding: Wedding = weddings[0];
 
   // Type guard to ensure wedding is defined
   if (!wedding) {
@@ -38,13 +44,13 @@ export default async function DashboardPage() {
   }
 
   // Fetch dashboard stats
-  const { data: stats } = await supabase
+  const { data: stats }: { data: DashboardStats | null } = await supabase
     .from("wedding_dashboard_stats")
     .select("*")
     .eq("wedding_id", wedding.id)
     .single();
 
-  const { data: recentGuests } = await supabase
+  const { data: recentGuests }: { data: Guest[] | null } = await supabase
     .from("guests")
     .select("*")
     .eq("wedding_id", wedding.id)

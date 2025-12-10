@@ -34,7 +34,7 @@ export default function SetupPage() {
       if (!user) throw new Error("Not authenticated");
 
       // Generate slug
-      const { data: slugData, error: slugError } = await supabase.rpc(
+      const { data: slugData, error: slugError } = await (supabase as any).rpc(
         "generate_wedding_slug",
         {
           p_bride_name: formData.brideName,
@@ -47,7 +47,7 @@ export default function SetupPage() {
       }
 
       // Create wedding
-      const { data: wedding, error: weddingError } = await supabase
+      const { data: wedding, error: weddingError } = await (supabase as any)
         .from("weddings")
         .insert({
           owner_id: user.id,
@@ -66,7 +66,7 @@ export default function SetupPage() {
       if (weddingError) throw weddingError;
 
       // Create default website content
-      const { error: contentError } = await supabase
+      const { error: contentError } = await (supabase as any)
         .from("website_content")
         .insert({
           wedding_id: wedding.id,
@@ -87,7 +87,7 @@ export default function SetupPage() {
         { name: "Reception", type: "post_wedding", display_order: 4 },
       ];
 
-      const { error: ceremoniesError } = await supabase
+      const { error: ceremoniesError } = await (supabase as any)
         .from("ceremonies")
         .insert(
           ceremonies.map((ceremony) => ({
